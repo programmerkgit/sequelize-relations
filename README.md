@@ -14,12 +14,12 @@
 リレーションシップの例
 
 ## DB定義
-`src/db/migrations/20200519000005-create-user.ts`
-`src/db/migrations/20200519000006-create-follow.ts`
+- `src/db/migrations/20200519000005-create-user.ts`  
+- `src/db/migrations/20200519000006-create-follow.ts`
 
 ## モデル定義
-`src/db/models/user.model.ts`
-`src/db/models/follow-relation.model.ts`
+- `src/db/models/user.model.ts`
+- `src/db/models/follow-relation.model.ts`
 
 ## 実行スクリプト
 `ts-node src/snippets/relations.ts`
