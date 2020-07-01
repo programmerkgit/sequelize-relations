@@ -1,4 +1,5 @@
 import { AfterCreate, BeforeValidate, Model, Table } from 'sequelize-typescript';
+import { User } from '../db';
 
 
 @Table({

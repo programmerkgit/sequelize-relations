@@ -61,6 +61,15 @@ User.findByPk(3, {
   console.log(v.toJSON(), 'find with children');
 });
 
+User.findByPk(1, {
+  include: [ {
+    model: User,
+    as: 'youngChildren',
+  } ],
+}).then(v => {
+  console.log(v.toJSON(), 'find with youngChildren(scope association)');
+});
+
 User.findByPk(4, {
   include: [ {
     model: User,

@@ -6,7 +6,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
   return queryInterface.sequelize.transaction(async t => {
     const mother = await User.create({ name: '母美' }, { transaction: t });
     const father = await User.create({ name: '父夫' }, { transaction: t });
-    const kotaro = await User.create({ name: '小太郎' }, { transaction: t });
+    const kotaro = await User.create({ name: '小太郎', age: 20 }, { transaction: t });
     const kojiro = await User.create({ name: '小次郎' }, { transaction: t });
     await father.update({
       partnerId: mother.id,

@@ -17,6 +17,10 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.TEXT,
     },
 
+    deletedAt: {
+      allowNull: true,
+      type: Sequelize.DATE,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

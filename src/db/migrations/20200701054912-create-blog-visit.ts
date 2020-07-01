@@ -1,6 +1,6 @@
 import { QueryInterface } from 'sequelize';
 
-const tableName = 'PageVisits';
+const tableName = 'BlogVisits';
 
 export const up = (queryInterface: QueryInterface, Sequelize) => {
   return queryInterface.createTable(tableName, {
@@ -28,6 +28,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
         model: 'blogs',
       },
     },
+
 
     createdAt: {
       allowNull: false,

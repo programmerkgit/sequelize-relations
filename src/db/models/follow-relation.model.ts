@@ -1,4 +1,4 @@
-import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { User } from './user.model';
 
 
@@ -7,10 +7,10 @@ export type UserRole = 'apiAdmin' | 'general'
 @Table
 export class FollowRelation extends Model<FollowRelation> {
 
-
+  @AllowNull(false)
   @ForeignKey(() => User)
-  @Column
-  followerId: string;
+  @Column(DataType.INTEGER)
+  followerId: number;
 
   @BelongsTo(() => User, { onDelete: 'cascade', foreignKey: 'followerId' })
   follower: User;
@@ -18,8 +18,9 @@ export class FollowRelation extends Model<FollowRelation> {
   @BelongsTo(() => User, { onDelete: 'cascade', foreignKey: 'userId' })
   user: User;
 
+  @AllowNull(false)
   @ForeignKey(() => User)
-  @Column
-  userId: string;
+  @Column(DataType.INTEGER)
+  userId: number;
 
 }

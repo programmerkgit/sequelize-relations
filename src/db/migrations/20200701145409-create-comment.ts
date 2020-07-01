@@ -1,6 +1,6 @@
 import { QueryInterface } from 'sequelize';
 
-const tableName = 'Users';
+const tableName = 'CommentModels';
 
 export const up = (queryInterface: QueryInterface, Sequelize) => {
   return queryInterface.createTable(tableName, {
@@ -11,38 +11,20 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
     },
 
-    partnerId: {
-      allowNull: true,
-      type: Sequelize.INTEGER,
-      /* when partner deleted */
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-      references: {
-        key: 'id',
-        model: 'Users',
-      },
-    },
-
-    parentId: {
-      allowNull: true,
-      type: Sequelize.INTEGER,
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-      references: {
-        key: 'id',
-        model: 'Users',
-      },
-    },
-
-    name: {
-      allowNull: false,
-      type: Sequelize.STRING,
-    },
-    age: {
+    commentableId: {
       allowNull: false,
       type: Sequelize.INTEGER,
-      defaultValue: -1,
     },
+    commentableType: {
+      allowNull: false,
+      type: Sequelize.ENUM('Blog', 'Comment'),
+    },
+
+    deletedAt: {
+      allowNull: true,
+      type: Sequelize.DATE,
+    },
+
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -52,10 +34,6 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       allowNull: false,
       type: Sequelize.DATE,
       defaultValue: Sequelize.fn('NOW'),
-    },
-    deletedAt: {
-      allowNull: true,
-      type: Sequelize.DATE,
     },
   });
 };

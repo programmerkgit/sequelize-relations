@@ -1,6 +1,5 @@
 import {
   AllowNull,
-  BeforeValidate,
   BelongsTo,
   BelongsToMany,
   Column,
@@ -11,6 +10,7 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
+import { Op } from 'sequelize';
 import { FollowRelation } from './follow-relation.model';
 import { Session } from './session.model';
 
@@ -19,7 +19,6 @@ import { Session } from './session.model';
   paranoid: true,
 })
 export class User extends Model<User> {
-
 
   @ForeignKey(() => User)
   @Column
@@ -65,6 +64,22 @@ export class User extends Model<User> {
   })
   children: User[];
 
+
+  /* Scoped Association　*/
+  @HasMany(() => User, {
+    as: 'youngChildren', foreignKey: 'parentId', scope: {
+      age: {
+        [ Op.lte ]: 12,
+      },
+    },
+  })
+  youngChildren: User[];
+
+
+  @Default(-1)
+  @AllowNull(false)
+  @Column
+  age: number;
 
   @AllowNull(false)
   @Default('')
