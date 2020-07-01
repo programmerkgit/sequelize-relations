@@ -1,6 +1,6 @@
 import { User } from '../db';
 
-/* Paranoidでcascade された時、SET NULLしたらRestoreできないことに注意 */
+/* Paranoid id doesn't cascade */
 /* Paranoidでcascadeしたい場合はHookを使う */
 
 

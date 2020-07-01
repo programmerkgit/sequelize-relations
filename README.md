@@ -22,4 +22,4 @@
 - `src/db/models/follow-relation.model.ts`
 
 ## 実行スクリプト
-`ts-node src/snippets/relations.ts`
+`ts-node src/snippets/eager-relation.ts`

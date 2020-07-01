@@ -1,14 +1,13 @@
 import {
   AllowNull,
-  AutoIncrement,
   BelongsTo,
   BelongsToMany,
   Column,
+  Default,
   ForeignKey,
   HasMany,
   HasOne,
   Model,
-  PrimaryKey,
   Table,
 } from 'sequelize-typescript';
 import { FollowRelation } from './follow-relation.model';
@@ -19,6 +18,7 @@ import { Session } from './session.model';
   paranoid: true,
 })
 export class User extends Model<User> {
+
 
   @ForeignKey(() => User)
   @Column
@@ -66,6 +66,7 @@ export class User extends Model<User> {
 
 
   @AllowNull(false)
+  @Default('')
   @Column
   name: string;
 
