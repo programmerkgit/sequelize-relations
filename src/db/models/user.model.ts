@@ -1,5 +1,6 @@
 import {
   AllowNull,
+  BeforeValidate,
   BelongsTo,
   BelongsToMany,
   Column,
@@ -69,5 +70,10 @@ export class User extends Model<User> {
   @Default('')
   @Column
   name: string;
+
+  // @BeforeValidate
+  // static test(instance: User) {
+  //   instance.name = '';
+  // }
 
 }

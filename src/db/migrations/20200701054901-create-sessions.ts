@@ -19,6 +19,18 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       },
     },
 
+    start: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
+    },
+
+    end: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
+    },
+
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
