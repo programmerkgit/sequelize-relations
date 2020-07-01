@@ -20,11 +20,6 @@ import { Session } from './session.model';
 })
 export class User extends Model<User> {
 
-  @AutoIncrement
-  @PrimaryKey
-  @Column
-  id: number;
-
   @ForeignKey(() => User)
   @Column
   partnerId: string;

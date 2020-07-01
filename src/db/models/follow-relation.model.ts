@@ -1,4 +1,4 @@
-import { AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { User } from './user.model';
 
 
@@ -7,10 +7,6 @@ export type UserRole = 'apiAdmin' | 'general'
 @Table
 export class FollowRelation extends Model<FollowRelation> {
 
-  @AutoIncrement
-  @PrimaryKey
-  @Column
-  id: string;
 
   @ForeignKey(() => User)
   @Column
