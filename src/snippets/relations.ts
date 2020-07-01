@@ -33,6 +33,24 @@ User.findByPk(2, {
   console.log(v.toJSON(), 'find with following, followers');
 });
 
+User.findByPk(2, {
+  include: [ {
+    model: User,
+    as: 'following',
+    through: {
+      attributes: [],
+    },
+  }, {
+    model: User,
+    as: 'followers',
+    through: {
+      attributes: [],
+    },
+  } ],
+}).then(v => {
+  console.log(v.toJSON(), 'find with following, followers without intermidiate table');
+});
+
 
 User.findByPk(3, {
   include: [ {
@@ -51,3 +69,31 @@ User.findByPk(4, {
 }).then(v => {
   console.log(v.toJSON(), 'find wit partner');
 });
+
+
+/*
+ The Super Many-to-Many relationship
+ User.belongsToMany(Profile, { through: Grant });
+ Profile.belongsToMany(User, { through: Grant });
+ User.hasMany(Grant);
+ Grant.belongsTo(User);
+ Profile.hasMany(Grant);
+ Grant.belongsTo(Profile);
+ User.findAll({
+  include: [
+    {
+      model: Grant,
+      include: [User, Profile]
+    },
+    {
+      model: Profile,
+      include: {
+        model: User,
+        include: {
+          model: Grant,
+          include: [User, Profile]
+        }
+      }
+    }
+  ]
+ */

@@ -4,8 +4,6 @@ import {
   BelongsTo,
   BelongsToMany,
   Column,
-  DataType,
-  Default,
   ForeignKey,
   HasMany,
   HasOne,
@@ -14,20 +12,25 @@ import {
   Table,
 } from 'sequelize-typescript';
 import { FollowRelation } from './follow-relation.model';
+import { Session } from './session.model';
 
 
-@Table
+@Table({
+  paranoid: true,
+})
 export class User extends Model<User> {
 
-  @Default(DataType.INTEGER)
   @AutoIncrement
   @PrimaryKey
   @Column
-  id: string;
+  id: number;
 
   @ForeignKey(() => User)
   @Column
   partnerId: string;
+
+  @HasMany(() => Session)
+  sessions: Session[];
 
   @BelongsToMany(() => User, {
     through: () => FollowRelation,
@@ -45,17 +48,25 @@ export class User extends Model<User> {
   })
   following: User[];
 
-  @HasOne(() => User, { as: 'partner', foreignKey: 'partnerId' })
+  @HasOne(() => User,
+    { as: 'partner', foreignKey: 'partnerId' },
+  )
   partner: User;
 
   @ForeignKey(() => User)
   @Column
   parentId: string;
 
-  @BelongsTo(() => User, { as: 'parent', foreignKey: 'parentId' })
+  @BelongsTo(() => User, {
+    as: 'parent',
+    foreignKey: 'parentId',
+    hooks: true,
+  })
   parent: User;
 
-  @HasMany(() => User, { as: 'children', foreignKey: 'parentId' })
+  @HasMany(() => User, {
+    as: 'children', foreignKey: 'parentId',
+  })
   children: User[];
 
 

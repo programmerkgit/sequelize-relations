@@ -1,4 +1,5 @@
 import { QueryInterface } from 'sequelize';
+import { Blog } from '../index';
 
 const tableName = 'FollowRelations';
 /* TODO: change seeds for production */
@@ -10,11 +11,18 @@ const records = [
 ];
 
 export const up = (queryInterface: QueryInterface, Sequelize) => {
-  return queryInterface.bulkInsert(tableName, records);
+  return Blog.bulkCreate([
+    {
+      title: 'blog1',
+    },
+    {
+      title: 'blog2',
+    },
+  ]);
 };
 
 export const down = (queryInterface, Sequelize) => {
-  return queryInterface.bulkDelete(tableName, {
-    id: records.map(r => 1),
+  return Blog.destroy({
+    where: {}
   });
 };
