@@ -11,5 +11,5 @@ export const up = async (queryInterface: QueryInterface, Sequelize) => {
 };
 
 export const down = (queryInterface, Sequelize) => {
-  return Session.destroy({ where: {}, force: true });
+  return BlogVisit.destroy({ where: {}, force: true });
 };

@@ -10,11 +10,15 @@ export const up = async (queryInterface: QueryInterface, Sequelize) => {
 
 export const down = (queryInterface, Sequelize) => {
   return CommentModel.findOne().then(c => {
-    return c.getCommentable().then(blog => {
-      return Promise.all([
-        blog.destroy(),
-        c.destroy(),
-      ]);
-    });
+    if (c) {
+      return c.getCommentable().then(blog => {
+        if (blog) {
+          return Promise.all([
+            blog.destroy(),
+            c.destroy(),
+          ]);
+        }
+      });
+    }
   });
 };

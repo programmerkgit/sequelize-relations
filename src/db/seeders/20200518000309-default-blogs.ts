@@ -1,5 +1,5 @@
 import { QueryInterface } from 'sequelize';
-import { Blog } from '../index';
+import { Blog, User } from '../index';
 
 const tableName = 'FollowRelations';
 /* TODO: change seeds for production */
@@ -10,19 +10,22 @@ const records = [
   },
 ];
 
-export const up = (queryInterface: QueryInterface, Sequelize) => {
+export const up = async (queryInterface: QueryInterface, Sequelize) => {
+  const user = await User.findOne();
   return Blog.bulkCreate([
     {
       title: 'blog1',
+      userId: user.id,
     },
     {
       title: 'blog2',
+      userId: user.id,
     },
   ]);
 };
 
 export const down = (queryInterface, Sequelize) => {
   return Blog.destroy({
-    where: {}
+    where: {},
   });
 };

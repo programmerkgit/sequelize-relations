@@ -1,26 +1,10 @@
-'use strict';
+import { QueryInterface } from 'sequelize';
+import { Tag } from '../models/tag.model';
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+export const up = (queryInterface: QueryInterface, Sequelize) => {
+  return Tag.create({ name: 'blockchain' });
+};
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
-  },
-
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-  }
+export const down = (queryInterface, Sequelize) => {
+  return Tag.destroy({ where: {} });
 };

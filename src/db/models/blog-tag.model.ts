@@ -1,10 +1,8 @@
 import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
-import { Blog } from '../index';
 import { Tag } from './tag.model';
+import { Blog } from './blog.model';
 
-@Table({
-  paranoid: true,
-})
+@Table
 export class BlogTag extends Model<BlogTag> {
 
   @ForeignKey(() => Blog)

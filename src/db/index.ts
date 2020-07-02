@@ -5,13 +5,15 @@ import { Blog } from './models/blog.model';
 import { Session } from './models/session.model';
 import { BlogVisit } from './models/blog-visit.model';
 import { CommentModel } from './models/comment.model';
+import { Tag } from './models/tag.model';
+import { BlogTag } from './models/blog-tag.model';
 import config = require('./config/config');
 
 const dbOption = config[ process.env.NODE_ENV || 'development' ];
 
 const sequelize = new Sequelize({
   ...dbOption,
-  models: [ User, FollowRelation, Blog, Session, BlogVisit, CommentModel ],
+  models: [ User, FollowRelation, Blog, Session, BlogVisit, CommentModel, Tag, BlogTag ],
 });
 
-export { User, FollowRelation, Blog, Session, BlogVisit, CommentModel };
+export { User, FollowRelation, Blog, Session, BlogVisit, CommentModel, Tag, BlogTag };
