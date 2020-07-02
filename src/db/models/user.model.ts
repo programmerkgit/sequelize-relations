@@ -22,7 +22,7 @@ export class User extends Model<User> {
 
   @ForeignKey(() => User)
   @Column
-  partnerId: string;
+  wifeId: string;
 
   @HasMany(() => Session)
   sessions: Session[];
@@ -43,10 +43,15 @@ export class User extends Model<User> {
   })
   following: User[];
 
-  @HasOne(() => User,
-    { as: 'partner', foreignKey: 'partnerId' },
+  @BelongsTo(() => User,
+    { as: 'wife', foreignKey: 'wifeId' },
   )
-  partner: User;
+  wife: User;
+
+  @HasOne(() => User, {
+    as: 'husband', foreignKey: 'wifeId',
+  })
+  husband: User;
 
   @ForeignKey(() => User)
   @Column

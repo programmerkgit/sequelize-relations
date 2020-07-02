@@ -11,9 +11,10 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
     },
 
-    partnerId: {
+    wifeId: {
       allowNull: true,
       type: Sequelize.INTEGER,
+      unique: true,
       /* when partner deleted */
       onDelete: 'SET NULL',
       onUpdate: 'CASCADE',

@@ -1,6 +1,6 @@
 import { QueryInterface } from 'sequelize';
 
-const tableName = 'Blogs';
+const tableName = 'BlogTags';
 
 export const up = (queryInterface: QueryInterface, Sequelize) => {
   return queryInterface.createTable(tableName, {
@@ -11,21 +11,24 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
     },
 
-    title: {
+    blogId: {
       allowNull: false,
-      defaultValue: '',
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
+      unique: 'blog_tag',
+      references: {
+        key: 'id',
+        model: 'Blogs',
+      },
     },
 
-    userId: {
-      allowNull: true,
+    tagId: {
+      allowNull: false,
       type: Sequelize.INTEGER,
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
+      unique: 'blog_tag',
       references: {
-        key: "id",
-        model: "Users"
-      }
+        key: 'id',
+        model: 'Tags',
+      },
     },
 
     deletedAt: {

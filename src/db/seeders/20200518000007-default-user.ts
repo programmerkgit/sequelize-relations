@@ -9,10 +9,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
     const kotaro = await User.create({ name: '小太郎', age: 20 }, { transaction: t });
     const kojiro = await User.create({ name: '小次郎' }, { transaction: t });
     await father.update({
-      partnerId: mother.id,
-    }, { transaction: t });
-    await mother.update({
-      partnerId: father.id,
+      wifeId: mother.id,
     }, { transaction: t });
     await kotaro.update({
       parentId: mother.id,
