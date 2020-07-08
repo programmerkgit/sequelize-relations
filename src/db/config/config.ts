@@ -6,11 +6,21 @@ export = {
     'host': '127.0.0.1',
     'dialect': 'mysql',
   },
+  // 'development': {
+  //   'username': 'sqladmin',
+  //   'password': '<pass>',
+  //   'database': 'azure-function-test',
+  //   'host': 'azure-function-test.database.windows.net',
+  //   'dialect': 'mssql',
+  //   'dialectOptions': {
+  //     'encrypt': true
+  //   }
+  // },
   'test': {
-    'username': 'hashdataadmin@hashdatasql',
-    'password': 'AZUpaz1woxq',
-    'database': 'sequelize_relations',
-    'host': 'hashdatasql.mysql.database.azure.com',
+    'username': '',
+    'password': '',
+    'database': '',
+    'host': '',
     'dialect': 'mysql',
   },
   'production': {

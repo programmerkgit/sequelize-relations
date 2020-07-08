@@ -3,7 +3,9 @@ import { QueryInterface } from 'sequelize';
 const tableName = 'Users';
 
 export const up = (queryInterface: QueryInterface, Sequelize) => {
+
   return queryInterface.createTable(tableName, {
+
     id: {
       allowNull: false,
       primaryKey: true,
@@ -58,7 +60,9 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       allowNull: true,
       type: Sequelize.DATE,
     },
+
   });
+
 };
 
 export const down = (queryInterface, Sequelize) => {

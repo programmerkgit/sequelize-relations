@@ -16,7 +16,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
       references: {
         key: 'id',
-        model: 'sessions',
+        model: 'Sessions',
       },
     },
 
@@ -25,7 +25,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
       references: {
         key: 'id',
-        model: 'blogs',
+        model: 'Blogs',
       },
     },
 
