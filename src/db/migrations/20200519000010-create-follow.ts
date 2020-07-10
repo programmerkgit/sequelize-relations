@@ -14,6 +14,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
     userId: {
       allowNull: false,
       type: Sequelize.INTEGER,
+      unique: "follow",
       references: {
         key: 'id',
         model: 'Users',
@@ -23,6 +24,7 @@ export const up = (queryInterface: QueryInterface, Sequelize) => {
     followerId: {
       allowNull: false,
       type: Sequelize.INTEGER,
+      unique: "follow",
       references: {
         key: 'id',
         model: 'Users',
