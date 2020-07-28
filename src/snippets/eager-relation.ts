@@ -1,13 +1,5 @@
 import { User } from '../db';
 
-User.findByPk(1, {
-  include: [ {
-    model: User,
-    as: 'parent',
-  } ],
-}).then(v => {
-  console.log(v.toJSON(), 'find One with parent');
-});
 
 User.findByPk(1, {
   include: [ {

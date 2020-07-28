@@ -1,30 +1,16 @@
-# Self join relations ships
-
-## 1. 1 to 1
-夫婦関係
-
-## 1:n
-親子関係
-
-## n:m
-フォロー関係
-
-#　タイトル
-コードを書きます
-```
-const a = 30
-```
-
-# Script
-リレーションシップの例
-
-## DB定義
+## Database Definition
+Migration files define database schema. Migration files under src/db/migrations
 - `src/db/migrations/20200519000005-create-user.ts`  
 - `src/db/migrations/20200519000006-create-follow.ts`
 
-## モデル定義
+## Model definition
+Models are defined under src/db/models
 - `src/db/models/user.model.ts`
 - `src/db/models/follow-relation.model.ts`
 
-## 実行スクリプト
+## Run snippets scripts
+Use `ts-node` to run snippets.
 `ts-node src/snippets/eager-relation.ts`
+
+
+## How to model Database Relation 
