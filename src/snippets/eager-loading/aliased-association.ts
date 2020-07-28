@@ -66,7 +66,22 @@ import { User } from '../../db';
  * User.findOne({
  *    include: [{
  *      model: Book,
- *      as: Magazines
+ *      as: "Magazines"
+ *    }]
+ * })
+ * => {
+ *   id: 1,
+ *   name: "keishi",
+ *   books: [{
+ *     title: "history of keishi"
+ *   }]
+ * }
+ * ```
+ * Or you can use `association` option to specify alias name.
+ * ```tu@escro@t
+ * User.findOne({
+ *    include: [{
+ *      association: "Magazines"
  *    }]
  * })
  * => {
@@ -79,6 +94,7 @@ import { User } from '../../db';
  * ```
  *
  *
+ *
  * *
  * */
 
@@ -87,8 +103,7 @@ User.findByPk(1, {
     model: User,
     as: 'following',
   }, {
-    model: User,
-    as: 'followers',
+    association: 'followers',
   } ],
 }).then(v => {
   console.log(v.toJSON());
